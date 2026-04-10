@@ -1,0 +1,13 @@
+*.o
+*.mod
+*.exe
+*.s
+*.res
+*.ltrans.o
+*.ltrans.s
+*.ltrans_args
+*.lto_wrapper_args
+*.wpa.args.0
+*.ltrans.out
+ROMSPath-ROMSPath.f90
+out/

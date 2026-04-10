@@ -6,7 +6,7 @@
 !*** NUMBER OF PARTICLES ***
 $numparticles
 
-  numpar = 3000               ! Number of particles per file (total number for sim. on each node)  !CHANGE
+  numpar = 8               ! Number of particles per file (total number for sim. on each node)  !CHANGE
                              ! numpar should equal the number of rows in the particle 
                              ! locations input file
 $end
@@ -16,10 +16,10 @@ $end
 !*** TIME PARAMETERS ***
 $timeparam
 
-  days   = 0.25            ! Number of days to run the model  !CHANGE
-  iprint = 3600              ! Print interval for ROMSPath output (s); 3600 = every hour
-  dt     = 720               ! External time step (duration between hydro model predictions) (s) 
-  idt    = 60                ! Internal (particle tracking) time step (s)
+  days   = 0.9            ! Number of days to run the model  !CHANGE
+  iprint = 14400              ! Print interval for ROMSPath output (s); 3600 = every hour
+  dt     = 14400              ! External time step (duration between hydro model predictions) (s) 
+  idt    = 360                ! Internal (particle tracking) time step (s)
 
 $end
 
@@ -53,8 +53,8 @@ $hydroparam
   wavestd_prefix='/projects/f_hfuchs_1/accelvort/wave_snaildel_nestV04a/snaildel_waveaccel_'
               ,'/projects/f_hfuchs_1/accelvort/wave_snaildel_nestV04a/doppio_waveaccel_'       !CHANGE
   
-  Process_VA =.TRUE.			 ! PROCESS Vort./accel and write to netcdf file.
-  Process_WA =.TRUE.			 ! PROCESS Wave Accel and write to netcdf file.
+  Process_VA =.False.			 ! PROCESS Vort./accel and write to netcdf file.
+  Process_WA =.False.			 ! PROCESS Wave Accel and write to netcdf file.
 $end
 
 
@@ -208,8 +208,8 @@ $end
 
 
 $romsgrid
-	Ngrid=2              ! Refinement grids only!
-	refine=7             ! grid refinement, Should be Ngrid-1 long
+	Ngrid=1              ! Refinement grids only!
+	refine=1             ! grid refinement, Should be Ngrid-1 long
 $end
 
 
@@ -227,12 +227,11 @@ $end
   
 $romsoutput
   suffix='.nc'	 !File suffice required 
-  prefix='/projects/f_hfuchs_1/data/ROMS/snaildel_nestV04a00/snaildel_his_'
-        ,'/projects/f_hfuchs_1/data/ROMS/snaildel_nestV04a00/doppio_his_'        !CHANGE
+  prefix='./inp/his_gg_101.nc'      !CHANGE
 
   
-  time_vname='time'    ! NetCDF Input Time variable  name (usually ocean_time)
-  time_dname='time'    ! NetCDF Input Time dimension name (usually ocean_time)
+  time_vname='ocean_time'    ! NetCDF Input Time variable  name (usually ocean_time)
+  time_dname='ocean_time'    ! NetCDF Input Time dimension name (usually ocean_time)
   filenum = 0002          ! Number in first NetCDF input filename   !!*******CHANGE***********
   numdigits = 4              ! Number of digits in number portion of file name (with leading zeros)!!*******CHANGE***********
 !  startfile = .FALSE.        ! Is it the first file, i.e. does the file have an additional time step?!!*******CHANGE***********
@@ -246,7 +245,7 @@ $end
  ! parfile  = '/home/elhunter/ROMSPath/ROMSPathv3/TESTINIT.csv'     !Particle locations 
 $parloc
   
-  parfile  =  './init_nested.csv'   !Particle locations !CHANGE
+  parfile  =  './inp/init_particles.csv'   !Particle locations !CHANGE
 
 $end
 
@@ -266,9 +265,9 @@ $output
 
   !NOTE: Full path must already exist.  Model can create files, but not directories.
 
-  outpath = './'      ! Location to write output files  !CHANGE
+  outpath = './out/'      ! Location to write output files  !CHANGE
                              ! Use outpath = './' to write in same folder as the executable	
-  NCOutFile = 'SHOWNESTING_NOMIX'     ! Name of the NetCDF output files (do not include .nc)
+  NCOutFile = 'gulf_guinea_offline'     ! Name of the NetCDF output files (do not include .nc)
 
   outpathGiven = .TRUE.      ! If TRUE files are written to the path given in outpath
 
@@ -277,10 +276,10 @@ $output
   !NetCDF Model Metadata (these will be stale unless you edit them):
   RunName      = 'ROMSPath v.4.2 test case'
   ExeDir       = '.'
-  OutDir       = './output'
-  RunBy        = 'ELI HUNTER'
-  Institution  = 'RUTGERS'
-  StartedOn    = 'A time in 2019'
+  OutDir       = './out'
+  RunBy        = 'JAMES SUSANTO'
+  Institution  = 'UNIVERSITY OF MICHIGAN'
+  StartedOn    = 'A time in June 2024'
 $end
 
 

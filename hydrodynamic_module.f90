@@ -407,19 +407,22 @@
 			countr(1)=xi_u(ng)
 			countr(2)=eta_u(ng)
 			countr(3)=1
-			STATUS = NF90_INQ_VARID(NCID,'bustr',VID)
-			if (STATUS .NE. NF90_NOERR) then
-			  write(*,*) 'Problem find bustr'
-			  write(*,*) NF90_STRERROR(STATUS)
-			  stop
-			endif
 
-			STATUS = NF90_GET_VAR(NCID,VID,HYDRODATA(ng)%bustr(:,:,tind),STARTr,COUNTr)
-			if (STATUS .NE. NF90_NOERR) then
-			  write(*,*) 'Problem read bustr array'
-			  write(*,*) NF90_STRERROR(STATUS)
-			  stop
-			endif
+
+
+		STATUS = NF90_INQ_VARID(NCID,'bustr',VID)
+        if (STATUS .NE. NF90_NOERR) then
+          write(*,*) 'Problem find bustr - setting to 0'
+          HYDRODATA(ng)%bustr = 0.0
+        else
+          STATUS = NF90_GET_VAR(NCID,VID,HYDRODATA(ng)%bustr(:,:,tind),STARTr,COUNTr)
+          if (STATUS .NE. NF90_NOERR) then
+            write(*,*) 'Problem read bustr array'
+            write(*,*) NF90_STRERROR(STATUS)
+            stop
+          endif
+        endif
+
 			
 			! **** v stress ****
 			startr(1)=1
@@ -429,20 +432,20 @@
 			countr(1)=xi_v(ng)
 			countr(2)=eta_v(ng)
 			countr(3)=1
-			STATUS = NF90_INQ_VARID(NCID,'bvstr',VID)
-			if (STATUS .NE. NF90_NOERR) then
-			  write(*,*) 'Problem find bvstr'
-			  write(*,*) NF90_STRERROR(STATUS)
-			  stop
-			endif
 
-			STATUS = NF90_GET_VAR(NCID,VID,HYDRODATA(ng)%bvstr(:,:,tind),STARTr,COUNTr)
-			if (STATUS .NE. NF90_NOERR) then
-			  write(*,*) 'Problem read bvstr array'
-			  write(*,*) NF90_STRERROR(STATUS)
-			  stop
-			endif
 
+		STATUS = NF90_INQ_VARID(NCID,'bvstr',VID)
+        if (STATUS .NE. NF90_NOERR) then
+          write(*,*) 'Problem find bvstr - setting to 0'
+          HYDRODATA(ng)%bvstr = 0.0
+        else
+          STATUS = NF90_GET_VAR(NCID,VID,HYDRODATA(ng)%bvstr(:,:,tind),STARTr,COUNTr)
+          if (STATUS .NE. NF90_NOERR) then
+            write(*,*) 'Problem read bvstr array'
+            write(*,*) NF90_STRERROR(STATUS)
+            stop
+          endif
+        endif
 
 			
 		  else
