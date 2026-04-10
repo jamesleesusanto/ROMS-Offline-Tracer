@@ -11,3 +11,4 @@
 *.ltrans.out
 ROMSPath-ROMSPath.f90
 out/
+inp/
