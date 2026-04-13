@@ -6,7 +6,7 @@
 !*** NUMBER OF PARTICLES ***
 $numparticles
 
-  numpar = 8               ! Number of particles per file (total number for sim. on each node)  !CHANGE
+  numpar = 1000               ! Number of particles per file (total number for sim. on each node)  !CHANGE
                              ! numpar should equal the number of rows in the particle 
                              ! locations input file
 $end
@@ -245,7 +245,7 @@ $end
  ! parfile  = '/home/elhunter/ROMSPath/ROMSPathv3/TESTINIT.csv'     !Particle locations 
 $parloc
   
-  parfile  =  './inp/init_particles.csv'   !Particle locations !CHANGE
+  parfile  =  './inp/init_particles_gulfofginuea.csv'   !Particle locations !CHANGE
 
 $end
 

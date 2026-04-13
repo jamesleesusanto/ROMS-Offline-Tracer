@@ -12,3 +12,5 @@
 ROMSPath-ROMSPath.f90
 out/
 inp/
+venv/
+*.png
