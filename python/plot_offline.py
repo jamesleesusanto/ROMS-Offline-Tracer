@@ -13,6 +13,7 @@ colors = cm.rainbow(np.linspace(0, 1, numpar))
 
 fig, ax = plt.subplots(figsize=(10, 8), subplot_kw={'projection': ccrs.PlateCarree()})
 
+#Adjust Coord Window
 ax.set_extent([-15, 10, -10, 8], crs=ccrs.PlateCarree())
 ax.add_feature(cfeature.OCEAN, alpha=0.3)
 ax.add_feature(cfeature.LAND, alpha=0.3)
