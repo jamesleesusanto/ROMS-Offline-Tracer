@@ -40,8 +40,6 @@ Edit `init_particles.csv` to define your initial particle positions. The file fo
 <pLon, pLat, pZ, pDOB>
 ```
 
-> **Note:** Replace the above with your actual column headers and an example row, e.g. `lon, lat, depth`.
-
 ### 2. Compile
 
 ```bash
