@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 The plotting script supports two modes:
 
-**Plot trajectories** — generates a map of particle trajectories and saves it as `offline_trajectories.png`:
+**Plot trajectories** : generates a map of particle trajectories and saves it as `offline_trajectories.png`:
 
 ```bash
 python3 plot_offline.py --plot
@@ -64,7 +64,7 @@ or
 python3 plot_offline.py -p
 ```
 
-**Summary statistics** — prints key statistics about the particle trajectories including path length and net displacement:
+**Summary statistics** : prints key statistics about the particle trajectories including path length and net displacement:
 
 ```bash
 python3 plot_offline.py --summary
