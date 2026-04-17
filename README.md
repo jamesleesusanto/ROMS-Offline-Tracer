@@ -74,3 +74,5 @@ or
 
 ```bash
 python3 plot_offline.py -s
+
+### Honors 212 Coding Project, James Susanto and Ryo Ikeda
