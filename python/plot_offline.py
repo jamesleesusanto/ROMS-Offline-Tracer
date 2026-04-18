@@ -15,7 +15,7 @@ def haversine(lon1, lat1, lon2, lat2):
     a = np.sin(dlat/2)**2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon/2)**2
     return R * 2 * np.arcsin(np.sqrt(a))
 
-#Plot mode
+# PLOT MODE --plot or -p
 def plot_trajectories(ds):
     numpar = ds.sizes['numpar']
     colors = cm.rainbow(np.linspace(0, 1, numpar))
@@ -49,6 +49,7 @@ def plot_trajectories(ds):
     plt.savefig('offline_trajectories.png', dpi=150, bbox_inches='tight')
     print('saved to offline_trajectories.png')
 
+# SUMMARY MODE --summary or -s
 def print_summary(ds):
     numpar = ds.sizes['numpar']
     lon = ds.lon.values
