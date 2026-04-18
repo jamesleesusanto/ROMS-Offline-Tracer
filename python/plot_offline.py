@@ -20,10 +20,11 @@ def plot_trajectories(ds):
     numpar = ds.sizes['numpar']
     colors = cm.rainbow(np.linspace(0, 1, numpar))
 
+    fig, ax = plt.subplots(figsize=(10, 8), subplot_kw={'projection': ccrs.PlateCarree()})
+
     # ******************
     # Coordinate window set for gulf of Guinea. Change if Different Area
     # ******************    
-    fig, ax = plt.subplots(figsize=(10, 8), subplot_kw={'projection': ccrs.PlateCarree()})
     ax.set_extent([-15, 10, -10, 8], crs=ccrs.PlateCarree())
     ax.add_feature(cfeature.OCEAN, alpha=0.3)
     ax.add_feature(cfeature.LAND, alpha=0.3)
@@ -39,6 +40,11 @@ def plot_trajectories(ds):
     legend_elements = [Line2D([0], [0], marker='.', color='w', markerfacecolor='black',
                               markersize=8, label='Start position')]
     ax.legend(handles=legend_elements, loc='lower left')
+    
+
+    # ******************
+    # Title of Plot, Change to Preference
+    # ******************    
     plt.title('Offline Particle Trajectories - Gulf of Guinea')
     plt.savefig('offline_trajectories.png', dpi=150, bbox_inches='tight')
     print('saved to offline_trajectories.png')
